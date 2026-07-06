@@ -20,16 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <QueryProvider>
           <div className="flex flex-col h-screen" style={{ background: '#09090b' }}>
-            <div className="flex flex-1 overflow-hidden">
-              <Sidebar />
-              <main className="flex-1 overflow-y-auto p-6" style={{ background: '#09090b' }}>
-                {children}
-              </main>
-            </div>
             {/* Disclaimer banner */}
             <div style={{
               background: 'linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%)',
-              borderTop: '1px solid rgba(251, 191, 36, 0.3)',
+              borderBottom: '1px solid rgba(251, 191, 36, 0.3)',
               padding: '8px 24px',
               display: 'flex',
               alignItems: 'center',
@@ -48,6 +42,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }}>
                 <strong>Disclaimer:</strong> This is a hobby project. Do not use this for your financial decisions.
               </p>
+            </div>
+            <div className="flex flex-1 overflow-hidden">
+              <Sidebar />
+              <main className="flex-1 overflow-y-auto p-6" style={{ background: '#09090b' }}>
+                {children}
+              </main>
             </div>
           </div>
         </QueryProvider>
