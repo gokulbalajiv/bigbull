@@ -36,20 +36,10 @@ function AuditRow({ row, colorKey }: { row: any; colorKey: 'projected' | 'actual
   // Projected row with Target/Stop hit comparisons
   const fmtVal = (n?: number) => n ? '₹' + n.toFixed(2) : '—';
 
-  let statusColor = '#71717a';
-  let statusText = 'Pending';
-  if (row.actual_high !== undefined) {
-    if (row.target_hit) {
-      statusColor = '#10b981';
-      statusText = 'Target Hit';
-    } else if (row.stop_hit) {
-      statusColor = '#ef4444';
-      statusText = 'Stopped Out';
-    } else {
-      statusColor = '#f59e0b';
-      statusText = 'Active';
-    }
-  }
+  const isHit = !!row.target_hit;
+  const hasActualData = row.actual_high !== undefined;
+  const statusColor = isHit ? '#10b981' : '#ef4444';
+  const statusText  = isHit ? 'Hit' : 'Not Hit';
 
   return (
     <tr
@@ -69,7 +59,7 @@ function AuditRow({ row, colorKey }: { row: any; colorKey: 'projected' | 'actual
         <div style={{ marginTop: 2 }}><span style={{ color: '#ef4444', fontWeight: 600 }}>S:</span> {fmtVal(row.stop_loss)}</div>
       </td>
       <td style={{ padding: '12px 16px', fontSize: 11, fontFamily: 'monospace', color: '#a1a1aa' }}>
-        {row.actual_high !== undefined ? (
+        {hasActualData ? (
           <>
             <div><span style={{ color: '#71717a' }}>Max:</span> {fmtVal(row.actual_high)}</div>
             <div style={{ marginTop: 2 }}><span style={{ color: '#71717a' }}>Min:</span> {fmtVal(row.actual_low)}</div>
@@ -79,10 +69,12 @@ function AuditRow({ row, colorKey }: { row: any; colorKey: 'projected' | 'actual
         )}
       </td>
       <td style={{ padding: '12px 16px' }}>
-        {row.actual_high !== undefined ? (
+        {hasActualData ? (
           <span style={{
-            display: 'inline-block', padding: '2px 8px', borderRadius: 4,
-            background: `${statusColor}14`, color: statusColor, fontSize: 10, fontWeight: 700,
+            display: 'inline-block', padding: '3px 10px', borderRadius: 4,
+            background: `${statusColor}18`, color: statusColor,
+            fontSize: 10, fontWeight: 800, letterSpacing: '0.04em',
+            border: `1px solid ${statusColor}30`,
           }}>
             {statusText}
           </span>
