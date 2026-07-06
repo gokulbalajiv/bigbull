@@ -153,11 +153,21 @@ export async function GET(req: NextRequest) {
 
   let hits: string[] = [], misses: string[] = [], hitRate = 0;
   if (hasProjected && hasActuals) {
-    const projSet = new Set(projected!.map(p => p.ticker));
-    const actTickers = actuals!.map(a => a.ticker);
-    hits = actTickers.filter(t => projSet.has(t));
-    misses = actTickers.filter(t => !projSet.has(t));
-    hitRate = hits.length / 10;
+    // Use target_hit flags (did actual intraday high reach projected price?)
+    // This is the same logic as the Hit / Not Hit badges in the table.
+    const withFlags = projected!.filter(p => (p as any).actual_high !== undefined);
+    if (withFlags.length > 0) {
+      hits   = withFlags.filter(p => !!(p as any).target_hit).map(p => p.ticker);
+      misses = withFlags.filter(p => !(p as any).target_hit).map(p => p.ticker);
+      hitRate = hits.length / withFlags.length;
+    } else {
+      // Fallback when enrichment hasn't run yet: use ticker overlap
+      const projSet = new Set(projected!.map(p => p.ticker));
+      const actTickers = actuals!.map(a => a.ticker);
+      hits   = actTickers.filter(t => projSet.has(t));
+      misses = actTickers.filter(t => !projSet.has(t));
+      hitRate = hits.length / 10;
+    }
   }
 
   return NextResponse.json({
