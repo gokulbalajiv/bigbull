@@ -234,10 +234,11 @@ function VarianceSection({ auditData }: { auditData: any }) {
                   <Tooltip
                     contentStyle={{ background: '#18181b', border: '1px solid #3f3f46', borderRadius: 8, fontSize: 11 }}
                     labelStyle={{ color: '#f59e0b', fontWeight: 700, marginBottom: 4 }}
-                    formatter={(value: any, name: string) => [
-                      `${value > 0 ? '+' : ''}${value}%`,
-                      name === 'predicted' ? 'Predicted' : 'Actual',
-                    ]}
+                    formatter={(value: any, name: any) => {
+                      const label = name === 'predicted' ? 'Predicted' : 'Actual';
+                      const val = `${Number(value) > 0 ? '+' : ''}${Number(value).toFixed(2)}%`;
+                      return [val, label] as [string, string];
+                    }}
                   />
                   <Bar dataKey="predicted" fill="#f59e0b" opacity={0.75} radius={[3, 3, 0, 0]} maxBarSize={28} />
                   <Bar dataKey="actual" radius={[3, 3, 0, 0]} maxBarSize={28}>
