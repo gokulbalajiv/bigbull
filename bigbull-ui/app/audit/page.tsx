@@ -193,7 +193,6 @@ function VarianceSection({ auditData }: { auditData: any }) {
                   Predicted
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <span style={{ width: 8, height: 8, borderRadius: 2, background: '#10b981', display: 'inline-block' }} />
                   Actual max from open (Hit)
                 </span>
