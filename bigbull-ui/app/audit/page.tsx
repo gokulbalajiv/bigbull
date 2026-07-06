@@ -234,6 +234,7 @@ function VarianceSection({ auditData }: { auditData: any }) {
                   <Tooltip
                     contentStyle={{ background: '#18181b', border: '1px solid #3f3f46', borderRadius: 8, fontSize: 11 }}
                     labelStyle={{ color: '#f59e0b', fontWeight: 700, marginBottom: 4 }}
+                    itemStyle={{ color: '#ffffff' }}
                     formatter={(value: any, name: any) => {
                       const label = name === 'predicted' ? 'Predicted' : 'Actual';
                       const val = `${Number(value) > 0 ? '+' : ''}${Number(value).toFixed(2)}%`;
@@ -255,26 +256,36 @@ function VarianceSection({ auditData }: { auditData: any }) {
           </div>
         )}
 
-        {/* Learning: variance log entries for this date */}
-        {variance.log_entries.length > 0 && (
+        {/* Not Hit breakdown — derived from projected stocks with target_hit=false */}
+        {variance.misses.length > 0 && (
           <div>
             <p style={{ fontSize: 10, color: '#52525b', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>
-              Variance Log — {variance.log_entries.length} entries recorded
+              Not Hit — {variance.misses.length} projected target{variance.misses.length !== 1 ? 's' : ''} missed
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {variance.log_entries.slice(0, 5).map((entry: any) => (
-                <div key={entry.id} style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  background: '#0e0e10', borderRadius: 8, padding: '10px 14px', border: '1px solid #1f1f21',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#ef4444', fontWeight: 600 }}>{entry.missed_ticker}</span>
-                    <span style={{ color: '#3f3f46' }}>·</span>
-                    <span style={{ fontSize: 11, color: '#52525b' }}>missed · actual {entry.actual_return > 0 ? '+' : ''}{entry.actual_return?.toFixed(2)}%</span>
+              {variance.misses.map((ticker: string) => {
+                const proj = auditData.projected?.find((p: any) => p.ticker === ticker);
+                const actualEntry = auditData.actuals?.find((a: any) => a.ticker === ticker);
+                const actualPct = actualEntry?.daily_return_pct ?? proj?.change_pct ?? 0;
+                const predictedPct = proj?.upside_pct ?? 0;
+                return (
+                  <div key={ticker} style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    background: '#0e0e10', borderRadius: 8, padding: '10px 14px', border: '1px solid #1f1f21',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#ef4444', fontWeight: 600 }}>{ticker}</span>
+                      <span style={{ color: '#3f3f46' }}>·</span>
+                      <span style={{ fontSize: 11, color: '#52525b' }}>
+                        target not reached · actual {actualPct > 0 ? '+' : ''}{actualPct.toFixed(2)}%
+                      </span>
+                    </div>
+                    <span style={{ fontFamily: 'monospace', fontSize: 10, color: '#f59e0b' }}>
+                      predicted +{predictedPct.toFixed(2)}%
+                    </span>
                   </div>
-                  <span style={{ fontFamily: 'monospace', fontSize: 10, color: '#3f3f46' }}>{entry.engine_failure_point}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
