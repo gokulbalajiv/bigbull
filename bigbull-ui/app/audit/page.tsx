@@ -193,8 +193,13 @@ function VarianceSection({ auditData }: { auditData: any }) {
                   Predicted
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <span style={{ width: 8, height: 8, borderRadius: 2, background: '#10b981', display: 'inline-block' }} />
-                  Actual
+                  Actual max from open (Hit)
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: '#ef4444', display: 'inline-block' }} />
+                  Actual max from open (Not Hit)
                 </span>
               </div>
             </div>
@@ -202,15 +207,16 @@ function VarianceSection({ auditData }: { auditData: any }) {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={auditData.projected.map((p: any) => {
-                    // actual return: try actuals list first, fall back to change_pct
-                    const actualEntry = auditData.actuals?.find((a: any) => a.ticker === p.ticker);
-                    const actualPct = actualEntry
-                      ? parseFloat(actualEntry.daily_return_pct.toFixed(2))
-                      : parseFloat((p.change_pct ?? 0).toFixed(2));
+                    const open = p.day_start_price ?? 0;
+                    // Max intraday gain from open — same baseline as upside_pct
+                    const actualHigh = (p as any).actual_high;
+                    const actualMaxFromOpen = open > 0 && actualHigh
+                      ? parseFloat(((actualHigh - open) / open * 100).toFixed(2))
+                      : null;
                     return {
                       ticker: p.ticker,
                       predicted: parseFloat((p.upside_pct ?? 0).toFixed(2)),
-                      actual: actualPct,
+                      actual: actualMaxFromOpen,
                       hit: !!(p as any).target_hit,
                     };
                   })}
@@ -236,7 +242,8 @@ function VarianceSection({ auditData }: { auditData: any }) {
                     labelStyle={{ color: '#f59e0b', fontWeight: 700, marginBottom: 4 }}
                     itemStyle={{ color: '#ffffff' }}
                     formatter={(value: any, name: any) => {
-                      const label = name === 'predicted' ? 'Predicted' : 'Actual';
+                      if (value === null || value === undefined) return ['—', name === 'predicted' ? 'Predicted target' : 'Actual max from open'];
+                      const label = name === 'predicted' ? 'Predicted target' : 'Actual max from open';
                       const val = `${Number(value) > 0 ? '+' : ''}${Number(value).toFixed(2)}%`;
                       return [val, label] as [string, string];
                     }}
@@ -251,7 +258,7 @@ function VarianceSection({ auditData }: { auditData: any }) {
               </ResponsiveContainer>
             </div>
             <p style={{ fontSize: 10, color: '#3f3f46', marginTop: 6, textAlign: 'center' }}>
-              Amber = predicted upside % · Green = actual gain (hit) · Red = actual change (not hit)
+              Amber = predicted upside % from open · Green/Red = actual intraday high % from open
             </p>
           </div>
         )}
