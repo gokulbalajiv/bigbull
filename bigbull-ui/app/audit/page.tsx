@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine, Cell } from 'recharts';
 import { Calendar, Database, AlertCircle } from 'lucide-react';
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -180,28 +180,77 @@ function VarianceSection({ auditData }: { auditData: any }) {
           <KpiCard label="Misses" value={String(variance.misses.length)} sub={variance.misses.join(', ') || 'None'} color="#ef4444" />
         </div>
 
-        {variance.misses.length > 0 && (
+        {/* Predicted vs Actual comparison chart */}
+        {auditData.projected?.length > 0 && (
           <div style={{ marginBottom: 24 }}>
-            <p style={{ fontSize: 10, color: '#52525b', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 12 }}>
-              Missed Ticker Performance
-            </p>
-            <div style={{ height: 160 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+              <p style={{ fontSize: 10, color: '#52525b', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0 }}>
+                Predicted vs Actual Return (%)
+              </p>
+              <div style={{ display: 'flex', gap: 16, fontSize: 10, color: '#71717a' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: '#f59e0b', display: 'inline-block' }} />
+                  Predicted
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: 2, background: '#10b981', display: 'inline-block' }} />
+                  Actual
+                </span>
+              </div>
+            </div>
+            <div style={{ height: 220 }}>
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={
-                  variance.misses.map((ticker: string) => {
-                    const actual = auditData.actuals.find((a: any) => a.ticker === ticker);
-                    return { ticker, return: actual ? Math.abs(actual.daily_return_pct).toFixed(2) : '0.00' };
-                  })
-                }>
-                  <XAxis dataKey="ticker" tick={{ fill: '#71717a', fontSize: 10 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: '#71717a', fontSize: 10 }} unit="%" axisLine={false} tickLine={false} />
-                  <Tooltip contentStyle={{ background: '#18181b', border: '1px solid #27272a', borderRadius: 8, fontSize: 12 }} labelStyle={{ color: '#f59e0b', fontWeight: 700 }} />
-                  <Bar dataKey="return" radius={[4, 4, 0, 0]} maxBarSize={40}>
-                    {variance.misses.map((_: any, i: number) => <Cell key={i} fill="#f59e0b" opacity={0.8} />)}
+                <BarChart
+                  data={auditData.projected.map((p: any) => {
+                    // actual return: try actuals list first, fall back to change_pct
+                    const actualEntry = auditData.actuals?.find((a: any) => a.ticker === p.ticker);
+                    const actualPct = actualEntry
+                      ? parseFloat(actualEntry.daily_return_pct.toFixed(2))
+                      : parseFloat((p.change_pct ?? 0).toFixed(2));
+                    return {
+                      ticker: p.ticker,
+                      predicted: parseFloat((p.upside_pct ?? 0).toFixed(2)),
+                      actual: actualPct,
+                      hit: !!(p as any).target_hit,
+                    };
+                  })}
+                  barGap={2}
+                  barCategoryGap="28%"
+                >
+                  <XAxis
+                    dataKey="ticker"
+                    tick={{ fill: '#71717a', fontSize: 9 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fill: '#71717a', fontSize: 9 }}
+                    unit="%"
+                    axisLine={false}
+                    tickLine={false}
+                    width={32}
+                  />
+                  <ReferenceLine y={0} stroke="#27272a" />
+                  <Tooltip
+                    contentStyle={{ background: '#18181b', border: '1px solid #3f3f46', borderRadius: 8, fontSize: 11 }}
+                    labelStyle={{ color: '#f59e0b', fontWeight: 700, marginBottom: 4 }}
+                    formatter={(value: any, name: string) => [
+                      `${value > 0 ? '+' : ''}${value}%`,
+                      name === 'predicted' ? 'Predicted' : 'Actual',
+                    ]}
+                  />
+                  <Bar dataKey="predicted" fill="#f59e0b" opacity={0.75} radius={[3, 3, 0, 0]} maxBarSize={28} />
+                  <Bar dataKey="actual" radius={[3, 3, 0, 0]} maxBarSize={28}>
+                    {auditData.projected.map((p: any, i: number) => (
+                      <Cell key={i} fill={(p as any).target_hit ? '#10b981' : '#ef4444'} fillOpacity={0.85} />
+                    ))}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
+            <p style={{ fontSize: 10, color: '#3f3f46', marginTop: 6, textAlign: 'center' }}>
+              Amber = predicted upside % · Green = actual gain (hit) · Red = actual change (not hit)
+            </p>
           </div>
         )}
 
