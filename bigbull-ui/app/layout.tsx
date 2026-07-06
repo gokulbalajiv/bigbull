@@ -19,11 +19,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <QueryProvider>
-          <div className="flex h-screen overflow-hidden" style={{ background: '#09090b' }}>
-            <Sidebar />
-            <main className="flex-1 overflow-y-auto p-6" style={{ background: '#09090b' }}>
-              {children}
-            </main>
+          <div className="flex flex-col h-screen" style={{ background: '#09090b' }}>
+            <div className="flex flex-1 overflow-hidden">
+              <Sidebar />
+              <main className="flex-1 overflow-y-auto p-6" style={{ background: '#09090b' }}>
+                {children}
+              </main>
+            </div>
+            {/* Disclaimer banner */}
+            <div style={{
+              background: 'linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #1a1a2e 100%)',
+              borderTop: '1px solid rgba(251, 191, 36, 0.3)',
+              padding: '8px 24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              flexShrink: 0,
+            }}>
+              <span style={{ fontSize: '14px' }}>⚠️</span>
+              <p style={{
+                color: '#fbbf24',
+                fontSize: '12px',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+                margin: 0,
+                textAlign: 'center',
+              }}>
+                <strong>Disclaimer:</strong> This is a hobby project. Do not use this for your financial decisions.
+              </p>
+            </div>
           </div>
         </QueryProvider>
       </body>
