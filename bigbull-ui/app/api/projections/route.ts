@@ -157,7 +157,23 @@ export async function GET(req: NextRequest) {
     });
   } catch (err: any) {
     console.error('Projections fetch error:', err);
-    return NextResponse.json({ error: 'FETCH_FAILED', message: err.message }, { status: 502 });
+
+    // ── Graceful fallback: serve stored data if live fetch fails ─────────────
+    // This handles Yahoo Finance IP blocks on cloud hosting (Render, Vercel, etc.)
+    const fallback = loadProjections(today);
+    if (fallback) {
+      return NextResponse.json(fallback, {
+        headers: {
+          'Cache-Control': 'public, max-age=300',
+          'X-Data-Source': 'stored-fallback',
+        },
+      });
+    }
+
+    return NextResponse.json(
+      { error: 'FETCH_FAILED', message: 'Live market data unavailable and no stored projections found for today. Try again after market open.', detail: err.message },
+      { status: 502 }
+    );
   }
 }
 
