@@ -1,0 +1,96 @@
+{
+  "date": "2026-07-02",
+  "saved_at": "2026-07-02T11:39:11.048Z",
+  "actuals": [
+    {
+      "rank": 1,
+      "ticker": "INFY",
+      "daily_return_pct": 4.41,
+      "closing_price": 1028.8,
+      "total_volume_cr": 4.13,
+      "institutional_volume": 4.13,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 2,
+      "ticker": "HCLTECH",
+      "daily_return_pct": 3.77,
+      "closing_price": 1073.2,
+      "total_volume_cr": 0.88,
+      "institutional_volume": 0.88,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 3,
+      "ticker": "PERSISTENT",
+      "daily_return_pct": 3.66,
+      "closing_price": 4488.8,
+      "total_volume_cr": 1.94,
+      "institutional_volume": 1.94,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 4,
+      "ticker": "NAUKRI",
+      "daily_return_pct": 3.47,
+      "closing_price": 1028,
+      "total_volume_cr": 0.44,
+      "institutional_volume": 0.44,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 5,
+      "ticker": "TCS",
+      "daily_return_pct": 2.72,
+      "closing_price": 2036.6,
+      "total_volume_cr": 2.88,
+      "institutional_volume": 2.88,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 6,
+      "ticker": "NMDC",
+      "daily_return_pct": 2.6,
+      "closing_price": 86.49,
+      "total_volume_cr": 0.29,
+      "institutional_volume": 0.29,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 7,
+      "ticker": "OFSS",
+      "daily_return_pct": 2.54,
+      "closing_price": 11139,
+      "total_volume_cr": 0.48,
+      "institutional_volume": 0.48,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 8,
+      "ticker": "TECHM",
+      "daily_return_pct": 2.26,
+      "closing_price": 1393,
+      "total_volume_cr": 0.7,
+      "institutional_volume": 0.7,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 9,
+      "ticker": "TVSMOTOR",
+      "daily_return_pct": 2.18,
+      "closing_price": 3570.1,
+      "total_volume_cr": 1.24,
+      "institutional_volume": 1.24,
+      "saved_at": "2026-07-02T11:39:11.047Z"
+    },
+    {
+      "rank": 10,
+      "ticker": "HINDPETRO",
+      "daily_return_pct": 2.1,
+      "closing_price": 400.35,
+      "total_volume_cr": 0.42,
+      "institutional_volume": 0.42,
+      "saved_at": "2026-07-02T11:39:11.048Z"
+    }
+  ]
+}

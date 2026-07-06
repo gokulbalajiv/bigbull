@@ -1,0 +1,96 @@
+{
+  "date": "2026-07-05",
+  "saved_at": "2026-07-05T07:47:15.693Z",
+  "actuals": [
+    {
+      "rank": 1,
+      "ticker": "PERSISTENT",
+      "daily_return_pct": 5.78,
+      "closing_price": 4580.6,
+      "total_volume_cr": 8.52,
+      "institutional_volume": 8.52,
+      "saved_at": "2026-07-05T07:47:15.687Z"
+    },
+    {
+      "rank": 2,
+      "ticker": "INFY",
+      "daily_return_pct": 5.64,
+      "closing_price": 1040.9,
+      "total_volume_cr": 19.5,
+      "institutional_volume": 19.5,
+      "saved_at": "2026-07-05T07:47:15.687Z"
+    },
+    {
+      "rank": 3,
+      "ticker": "TECHM",
+      "daily_return_pct": 4.34,
+      "closing_price": 1421.3,
+      "total_volume_cr": 4.31,
+      "institutional_volume": 4.31,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 4,
+      "ticker": "TCS",
+      "daily_return_pct": 4.31,
+      "closing_price": 2068.1,
+      "total_volume_cr": 12.49,
+      "institutional_volume": 12.49,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 5,
+      "ticker": "HCLTECH",
+      "daily_return_pct": 4.24,
+      "closing_price": 1078.1,
+      "total_volume_cr": 4.02,
+      "institutional_volume": 4.02,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 6,
+      "ticker": "TVSMOTOR",
+      "daily_return_pct": 3.8,
+      "closing_price": 3626.8,
+      "total_volume_cr": 6.4,
+      "institutional_volume": 6.4,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 7,
+      "ticker": "NAUKRI",
+      "daily_return_pct": 3.28,
+      "closing_price": 1026.15,
+      "total_volume_cr": 2.26,
+      "institutional_volume": 2.26,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 8,
+      "ticker": "BAJAJFINSV",
+      "daily_return_pct": 3.23,
+      "closing_price": 1855.7,
+      "total_volume_cr": 3.32,
+      "institutional_volume": 3.32,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 9,
+      "ticker": "GODREJCP",
+      "daily_return_pct": 3.22,
+      "closing_price": 1077.2,
+      "total_volume_cr": 1.88,
+      "institutional_volume": 1.88,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    },
+    {
+      "rank": 10,
+      "ticker": "AMBUJACEM",
+      "daily_return_pct": 2.41,
+      "closing_price": 428.95,
+      "total_volume_cr": 2.62,
+      "institutional_volume": 2.62,
+      "saved_at": "2026-07-05T07:47:15.688Z"
+    }
+  ]
+}

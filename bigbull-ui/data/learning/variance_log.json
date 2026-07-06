@@ -1,0 +1,1037 @@
+[
+  {
+    "id": 1,
+    "date": "2026-06-08",
+    "missed_ticker": "WIPRO",
+    "actual_return": -8.37,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "WIPRO was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 2,
+    "date": "2026-06-08",
+    "missed_ticker": "NMDC",
+    "actual_return": -3.56,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NMDC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 3,
+    "date": "2026-06-08",
+    "missed_ticker": "SAIL",
+    "actual_return": -3.56,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "SAIL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 4,
+    "date": "2026-06-08",
+    "missed_ticker": "BPCL",
+    "actual_return": -3.34,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BPCL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 5,
+    "date": "2026-06-08",
+    "missed_ticker": "RVNL",
+    "actual_return": -3.13,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RVNL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 6,
+    "date": "2026-06-08",
+    "missed_ticker": "CANBK",
+    "actual_return": -2.87,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "CANBK was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 7,
+    "date": "2026-06-08",
+    "missed_ticker": "IREDA",
+    "actual_return": -2.65,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "IREDA was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 8,
+    "date": "2026-06-08",
+    "missed_ticker": "TCS",
+    "actual_return": -2.16,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "TCS was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 9,
+    "date": "2026-06-08",
+    "missed_ticker": "RELIANCE",
+    "actual_return": -2.15,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RELIANCE was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 10,
+    "date": "2026-06-08",
+    "missed_ticker": "BAJFINANCE",
+    "actual_return": -2.06,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BAJFINANCE was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 85,
+      "new_value": 82.88
+    },
+    "audit_run_ts": "2026-06-08T15:43:10.594Z"
+  },
+  {
+    "id": 11,
+    "date": "2026-06-08",
+    "missed_ticker": "BHARTIARTL",
+    "actual_return": 0.84,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BHARTIARTL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.88,
+      "new_value": 83.71
+    },
+    "audit_run_ts": "2026-06-08T15:53:31.372Z"
+  },
+  {
+    "id": 12,
+    "date": "2026-06-08",
+    "missed_ticker": "GAIL",
+    "actual_return": 0.72,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "GAIL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.88,
+      "new_value": 83.71
+    },
+    "audit_run_ts": "2026-06-08T15:53:31.372Z"
+  },
+  {
+    "id": 13,
+    "date": "2026-06-08",
+    "missed_ticker": "INDIANB",
+    "actual_return": 0.11,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "INDIANB was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.88,
+      "new_value": 83.71
+    },
+    "audit_run_ts": "2026-06-08T15:53:31.372Z"
+  },
+  {
+    "id": 14,
+    "date": "2026-06-08",
+    "missed_ticker": "BEL",
+    "actual_return": 1.16,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BEL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 15,
+    "date": "2026-06-08",
+    "missed_ticker": "NAUKRI",
+    "actual_return": 1.09,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NAUKRI was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 16,
+    "date": "2026-06-08",
+    "missed_ticker": "BHARTIARTL",
+    "actual_return": 0.84,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BHARTIARTL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 17,
+    "date": "2026-06-08",
+    "missed_ticker": "GAIL",
+    "actual_return": 0.72,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "GAIL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 18,
+    "date": "2026-06-08",
+    "missed_ticker": "APOLLOHOSP",
+    "actual_return": 0.65,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "APOLLOHOSP was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 19,
+    "date": "2026-06-08",
+    "missed_ticker": "PERSISTENT",
+    "actual_return": 0.53,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "PERSISTENT was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 20,
+    "date": "2026-06-08",
+    "missed_ticker": "HAL",
+    "actual_return": 0.5,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HAL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.71,
+      "new_value": 82.87
+    },
+    "audit_run_ts": "2026-06-08T15:59:08.540Z"
+  },
+  {
+    "id": 21,
+    "date": "2026-06-11",
+    "missed_ticker": "BEL",
+    "actual_return": 1.16,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BEL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.87,
+      "new_value": 83.28
+    },
+    "audit_run_ts": "2026-06-11T12:25:44.499Z"
+  },
+  {
+    "id": 22,
+    "date": "2026-06-11",
+    "missed_ticker": "NAUKRI",
+    "actual_return": 1.09,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NAUKRI was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.87,
+      "new_value": 83.28
+    },
+    "audit_run_ts": "2026-06-11T12:25:44.499Z"
+  },
+  {
+    "id": 23,
+    "date": "2026-06-11",
+    "missed_ticker": "RELIANCE",
+    "actual_return": 0.83,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RELIANCE was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.87,
+      "new_value": 83.28
+    },
+    "audit_run_ts": "2026-06-11T12:25:44.499Z"
+  },
+  {
+    "id": 24,
+    "date": "2026-06-11",
+    "missed_ticker": "APOLLOHOSP",
+    "actual_return": 0.65,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "APOLLOHOSP was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 82.87,
+      "new_value": 83.28
+    },
+    "audit_run_ts": "2026-06-11T12:25:44.499Z"
+  },
+  {
+    "id": 25,
+    "date": "2026-06-12",
+    "missed_ticker": "BPCL",
+    "actual_return": 3.75,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BPCL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 26,
+    "date": "2026-06-12",
+    "missed_ticker": "HINDPETRO",
+    "actual_return": 3.19,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HINDPETRO was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 27,
+    "date": "2026-06-12",
+    "missed_ticker": "CHOLAFIN",
+    "actual_return": 2.8,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "CHOLAFIN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 28,
+    "date": "2026-06-12",
+    "missed_ticker": "IOC",
+    "actual_return": 2.47,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "IOC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 29,
+    "date": "2026-06-12",
+    "missed_ticker": "SHRIRAMFIN",
+    "actual_return": 2.44,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "SHRIRAMFIN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 30,
+    "date": "2026-06-12",
+    "missed_ticker": "UNIONBANK",
+    "actual_return": 2.37,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "UNIONBANK was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 31,
+    "date": "2026-06-12",
+    "missed_ticker": "NMDC",
+    "actual_return": 2.34,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NMDC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 32,
+    "date": "2026-06-12",
+    "missed_ticker": "BANKBARODA",
+    "actual_return": 2.09,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BANKBARODA was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 33,
+    "date": "2026-06-12",
+    "missed_ticker": "RVNL",
+    "actual_return": 1.98,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RVNL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 34,
+    "date": "2026-06-12",
+    "missed_ticker": "IREDA",
+    "actual_return": 1.98,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "IREDA was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 83.28,
+      "new_value": 81.2
+    },
+    "audit_run_ts": "2026-06-12T09:51:27.779Z"
+  },
+  {
+    "id": 35,
+    "date": "2026-06-12",
+    "missed_ticker": "SHRIRAMFIN",
+    "actual_return": 8.04,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "SHRIRAMFIN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 36,
+    "date": "2026-06-12",
+    "missed_ticker": "CHOLAFIN",
+    "actual_return": 7.81,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "CHOLAFIN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 37,
+    "date": "2026-06-12",
+    "missed_ticker": "HINDPETRO",
+    "actual_return": 6.89,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HINDPETRO was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 38,
+    "date": "2026-06-12",
+    "missed_ticker": "BPCL",
+    "actual_return": 6.06,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BPCL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 39,
+    "date": "2026-06-12",
+    "missed_ticker": "NYKAA",
+    "actual_return": 5.76,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NYKAA was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 40,
+    "date": "2026-06-12",
+    "missed_ticker": "IOC",
+    "actual_return": 5.32,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "IOC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 41,
+    "date": "2026-06-12",
+    "missed_ticker": "RVNL",
+    "actual_return": 5.15,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RVNL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 42,
+    "date": "2026-06-12",
+    "missed_ticker": "PAYTM",
+    "actual_return": 5.05,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "PAYTM was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 43,
+    "date": "2026-06-12",
+    "missed_ticker": "LT",
+    "actual_return": 4.71,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "LT was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 44,
+    "date": "2026-06-12",
+    "missed_ticker": "DLF",
+    "actual_return": 4.4,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "DLF was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.2,
+      "new_value": 79.17
+    },
+    "audit_run_ts": "2026-06-12T09:52:54.834Z"
+  },
+  {
+    "id": 45,
+    "date": "2026-06-15",
+    "missed_ticker": "RVNL",
+    "actual_return": 5.27,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "RVNL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.17,
+      "new_value": 79.96
+    },
+    "audit_run_ts": "2026-06-15T03:35:53.594Z"
+  },
+  {
+    "id": 46,
+    "date": "2026-06-15",
+    "missed_ticker": "IOC",
+    "actual_return": 5.18,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "IOC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.17,
+      "new_value": 79.96
+    },
+    "audit_run_ts": "2026-06-15T03:35:53.594Z"
+  },
+  {
+    "id": 47,
+    "date": "2026-06-15",
+    "missed_ticker": "DLF",
+    "actual_return": 4.41,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "DLF was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.17,
+      "new_value": 79.96
+    },
+    "audit_run_ts": "2026-06-15T03:35:53.594Z"
+  },
+  {
+    "id": 48,
+    "date": "2026-06-18",
+    "missed_ticker": "TRENT",
+    "actual_return": 1.85,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "TRENT was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_7",
+      "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+      "old_value": 59.74,
+      "new_value": 56.75
+    },
+    "audit_run_ts": "2026-06-18T12:11:16.818Z"
+  },
+  {
+    "id": 49,
+    "date": "2026-06-18",
+    "missed_ticker": "HDFCBANK",
+    "actual_return": 1.73,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HDFCBANK was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_7",
+      "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+      "old_value": 59.74,
+      "new_value": 56.75
+    },
+    "audit_run_ts": "2026-06-18T12:11:16.818Z"
+  },
+  {
+    "id": 50,
+    "date": "2026-06-18",
+    "missed_ticker": "NHPC",
+    "actual_return": 1.73,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NHPC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_7",
+      "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+      "old_value": 59.74,
+      "new_value": 56.75
+    },
+    "audit_run_ts": "2026-06-18T12:11:16.818Z"
+  },
+  {
+    "id": 51,
+    "date": "2026-06-18",
+    "missed_ticker": "SJVN",
+    "actual_return": 1.67,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "SJVN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_7",
+      "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+      "old_value": 59.74,
+      "new_value": 56.75
+    },
+    "audit_run_ts": "2026-06-18T12:11:16.818Z"
+  },
+  {
+    "id": 52,
+    "date": "2026-06-18",
+    "missed_ticker": "HDFCLIFE",
+    "actual_return": 1.5,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HDFCLIFE was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_7",
+      "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+      "old_value": 59.74,
+      "new_value": 56.75
+    },
+    "audit_run_ts": "2026-06-18T12:11:16.818Z"
+  },
+  {
+    "id": 53,
+    "date": "2026-06-19",
+    "missed_ticker": "BERGEPAINT",
+    "actual_return": 7.5,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BERGEPAINT was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 54,
+    "date": "2026-06-19",
+    "missed_ticker": "INDHOTEL",
+    "actual_return": 1.49,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "INDHOTEL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 55,
+    "date": "2026-06-19",
+    "missed_ticker": "NTPC",
+    "actual_return": 1.19,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NTPC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 56,
+    "date": "2026-06-19",
+    "missed_ticker": "BHARTIARTL",
+    "actual_return": 0.92,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "BHARTIARTL was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 57,
+    "date": "2026-06-19",
+    "missed_ticker": "CGPOWER",
+    "actual_return": 0.7,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "CGPOWER was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 58,
+    "date": "2026-06-19",
+    "missed_ticker": "NMDC",
+    "actual_return": 0.56,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NMDC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.96,
+      "new_value": 79.56
+    },
+    "audit_run_ts": "2026-06-19T13:24:23.651Z"
+  },
+  {
+    "id": 59,
+    "date": "2026-06-22",
+    "missed_ticker": "SJVN",
+    "actual_return": 2.46,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "SJVN was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 79.56,
+      "new_value": 81.15
+    },
+    "audit_run_ts": "2026-06-22T10:46:24.646Z"
+  },
+  {
+    "id": 60,
+    "date": "2026-07-02",
+    "missed_ticker": "INFY",
+    "actual_return": 4.41,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "INFY was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 61,
+    "date": "2026-07-02",
+    "missed_ticker": "HCLTECH",
+    "actual_return": 3.77,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HCLTECH was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 62,
+    "date": "2026-07-02",
+    "missed_ticker": "PERSISTENT",
+    "actual_return": 3.66,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "PERSISTENT was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 63,
+    "date": "2026-07-02",
+    "missed_ticker": "NAUKRI",
+    "actual_return": 3.47,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NAUKRI was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 64,
+    "date": "2026-07-02",
+    "missed_ticker": "TCS",
+    "actual_return": 2.72,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "TCS was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 65,
+    "date": "2026-07-02",
+    "missed_ticker": "NMDC",
+    "actual_return": 2.6,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "NMDC was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 66,
+    "date": "2026-07-02",
+    "missed_ticker": "OFSS",
+    "actual_return": 2.54,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "OFSS was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 67,
+    "date": "2026-07-02",
+    "missed_ticker": "TECHM",
+    "actual_return": 2.26,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "TECHM was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 68,
+    "date": "2026-07-02",
+    "missed_ticker": "TVSMOTOR",
+    "actual_return": 2.18,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "TVSMOTOR was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  },
+  {
+    "id": 69,
+    "date": "2026-07-02",
+    "missed_ticker": "HINDPETRO",
+    "actual_return": 2.1,
+    "engine_failure_point": "Level_7",
+    "failure_reason": "HINDPETRO was in actual top 10 by return but not in projected top 10",
+    "weight_adjustment_applied": {
+      "engine_level": "Level_1",
+      "modifier_key": "CRUDE_DANGER_THRESHOLD",
+      "old_value": 81.15,
+      "new_value": 79.12
+    },
+    "audit_run_ts": "2026-07-02T11:39:11.701Z"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "level": "Level_1",
+    "modifier_key": "CRUDE_DANGER_THRESHOLD",
+    "current_value": 79.12,
+    "base_value": 85,
+    "last_adjusted_at": "2026-07-02T11:39:11.711Z",
+    "adjustment_count": 10
+  },
+  {
+    "level": "Level_1",
+    "modifier_key": "YIELD_CURVE_WEIGHT",
+    "current_value": 0.35,
+    "base_value": 0.35,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_1",
+    "modifier_key": "CURRENCY_IMPACT_MULTIPLIER",
+    "current_value": 1.2,
+    "base_value": 1.2,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_2",
+    "modifier_key": "MIN_THEME_SCORE",
+    "current_value": 63.62,
+    "base_value": 65,
+    "last_adjusted_at": "2026-07-02T11:39:11.711Z",
+    "adjustment_count": 7
+  },
+  {
+    "level": "Level_2",
+    "modifier_key": "NLP_KEYWORD_MULTIPLIER",
+    "current_value": 1.15,
+    "base_value": 1.15,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_3",
+    "modifier_key": "MARGIN_PREMIUM_WEIGHT",
+    "current_value": 0.4,
+    "base_value": 0.4,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_3",
+    "modifier_key": "MARKET_SHARE_WEIGHT",
+    "current_value": 0.6,
+    "base_value": 0.6,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_3",
+    "modifier_key": "MIN_ROCE_SD",
+    "current_value": 3,
+    "base_value": 3,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_4",
+    "modifier_key": "MAX_PLEDGE_PCT",
+    "current_value": 15,
+    "base_value": 15,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_4",
+    "modifier_key": "MIN_RETAINED_VALUE_RATIO",
+    "current_value": 1.25,
+    "base_value": 1.25,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_5",
+    "modifier_key": "PEG_CONSTANT",
+    "current_value": 1.5,
+    "base_value": 1.5,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_5",
+    "modifier_key": "MIN_GAP_THRESHOLD",
+    "current_value": 5,
+    "base_value": 5,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_6",
+    "modifier_key": "MIN_HEADCOUNT_GROWTH",
+    "current_value": 2,
+    "base_value": 2,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_6",
+    "modifier_key": "MATERIAL_DEFLATION_WEIGHT",
+    "current_value": 0.3,
+    "base_value": 0.3,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_7",
+    "modifier_key": "INSTITUTIONAL_ACCUMULATION_MIN_CR",
+    "current_value": 59.44,
+    "base_value": 50,
+    "last_adjusted_at": "2026-07-02T11:39:11.711Z",
+    "adjustment_count": 11
+  },
+  {
+    "level": "Level_8",
+    "modifier_key": "MAX_THESIS_LENGTH_WORDS",
+    "current_value": 50,
+    "base_value": 50,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_9",
+    "modifier_key": "MAX_SECTOR_CONCENTRATION",
+    "current_value": 30,
+    "base_value": 30,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_9",
+    "modifier_key": "MAX_BETA",
+    "current_value": 1.35,
+    "base_value": 1.35,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_10",
+    "modifier_key": "LEARNING_RATE_ALPHA",
+    "current_value": 0.1804,
+    "base_value": 0.05,
+    "last_adjusted_at": "2026-07-02T11:39:11.711Z",
+    "adjustment_count": 11
+  },
+  {
+    "level": "Level_10",
+    "modifier_key": "ROLLING_AUDIT_WINDOW_DAYS",
+    "current_value": 14,
+    "base_value": 14,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  },
+  {
+    "level": "Level_10",
+    "modifier_key": "MAX_ADJUSTMENT_CAP",
+    "current_value": 0.2,
+    "base_value": 0.2,
+    "last_adjusted_at": "2026-06-08T04:56:52.503Z",
+    "adjustment_count": 0
+  }
+]
