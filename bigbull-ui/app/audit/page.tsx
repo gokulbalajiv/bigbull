@@ -353,6 +353,7 @@ export default function AuditPage() {
         <Calendar size={14} color="#ffffff" />
         <label style={{ fontSize: 13, color: '#a1a1aa', fontWeight: 500 }}>Audit Date:</label>
         <input
+          suppressHydrationWarning
           type="date" value={selectedDate} min={minDate} max={maxDate}
           onChange={e => setSelectedDate(e.target.value)}
           style={{
