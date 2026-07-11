@@ -412,4 +412,89 @@ export function deriveFlow(quote: NSEQuote): 'Accumulation' | 'Neutral' | 'Distr
   return 'Neutral';
 }
 
+/**
+ * Fetch historical OHLCV for a specific past trading date for a list of tickers.
+ * Uses Yahoo Finance v8/finance/chart with period1/period2 (date range).
+ * Returns a Map<ticker, { high, low, close, open }>.
+ */
+export async function fetchHistoricalDayOHLCV(
+  tickers: string[],
+  date: string // YYYY-MM-DD
+): Promise<Map<string, { high: number; low: number; close: number; open: number }>> {
+  // IST = UTC+5:30. Use start of day IST as period1, end of day IST as period2
+  const period1 = Math.floor(new Date(`${date}T00:00:00+05:30`).getTime() / 1000);
+  const period2 = Math.floor(new Date(`${date}T23:59:59+05:30`).getTime() / 1000);
+
+  const symbolMap = Object.fromEntries(NSE_UNIVERSE.map(u => [u.ticker, u.symbol]));
+  const result = new Map<string, { high: number; low: number; close: number; open: number }>();
+
+  const CONCURRENCY = 10;
+  for (let i = 0; i < tickers.length; i += CONCURRENCY) {
+    const batch = tickers.slice(i, i + CONCURRENCY);
+    await Promise.allSettled(batch.map(async ticker => {
+      const symbol = symbolMap[ticker] ?? `${ticker}.NS`;
+      try {
+        const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?period1=${period1}&period2=${period2}&interval=1d`;
+        const res = await fetch(url, { headers: YAHOO_HEADERS });
+        if (!res.ok) return;
+        const json = await res.json();
+        const r = json?.chart?.result?.[0];
+        if (!r) return;
+        const q = r.indicators?.quote?.[0];
+        if (!q) return;
+        const high  = q.high?.[0];
+        const low   = q.low?.[0];
+        const close = q.close?.[0];
+        const open  = q.open?.[0];
+        if (high && low) {
+          result.set(ticker, {
+            high:  Math.round(high  * 100) / 100,
+            low:   Math.round(low   * 100) / 100,
+            close: Math.round((close ?? high) * 100) / 100,
+            open:  Math.round((open  ?? low)  * 100) / 100,
+          });
+        }
+      } catch { /* skip ticker */ }
+    }));
+  }
+  return result;
+}
+
+/**
+ * Fetch historical actual top movers for a specific past trading date.
+ * Returns stocks ranked by daily return DESC for that date.
+ */
+export async function fetchHistoricalActualMovers(
+  date: string,
+  topN = 10
+): Promise<Array<{ ticker: string; sector: string; daily_return_pct: number; closing_price: number; volume_cr: number }>> {
+  const ohlcv = await fetchHistoricalDayOHLCV(NSE_ACTUALS_UNIVERSE.map(u => u.ticker), date);
+  const sectorMap = Object.fromEntries(NSE_ACTUALS_UNIVERSE.map(u => [u.ticker, u.sector]));
+
+  // We need previous-day close to compute daily_return_pct. Fetch prev-day OHLCV.
+  const prevDate = new Date(`${date}T12:00:00+05:30`);
+  prevDate.setDate(prevDate.getDate() - 1);
+  const prevDateStr = prevDate.toISOString().split('T')[0];
+  const prevOhlcv = await fetchHistoricalDayOHLCV(NSE_ACTUALS_UNIVERSE.map(u => u.ticker), prevDateStr);
+
+  const results: Array<{ ticker: string; sector: string; daily_return_pct: number; closing_price: number; volume_cr: number }> = [];
+  for (const [ticker, data] of ohlcv.entries()) {
+    const prev = prevOhlcv.get(ticker);
+    const prevClose = prev?.close ?? 0;
+    const dailyReturn = prevClose > 0 ? Math.round(((data.close - prevClose) / prevClose) * 10000) / 100 : 0;
+    results.push({
+      ticker,
+      sector: sectorMap[ticker] ?? 'Unknown',
+      daily_return_pct: dailyReturn,
+      closing_price: data.close,
+      volume_cr: 0, // volume not critical for historical actuals display
+    });
+  }
+
+  return results
+    .filter(r => r.closing_price > 0)
+    .sort((a, b) => b.daily_return_pct - a.daily_return_pct)
+    .slice(0, topN);
+}
+
 export { THEMATIC_ALPHA, THESIS_MAP };

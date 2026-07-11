@@ -5,7 +5,7 @@ import {
   appendVarianceLog, updateModifiers, loadModifiers,
   availableProjectionDates, StoredActual, updateProjections,
 } from '@/lib/store';
-import { fetchActualMovers, deriveConvictionScore, fetchAllNSEQuotes } from '@/lib/nseData';
+import { fetchActualMovers, fetchAllNSEQuotes, fetchHistoricalDayOHLCV, fetchHistoricalActualMovers } from '@/lib/nseData';
 
 /**
  * GET /api/audit?date=YYYY-MM-DD
@@ -27,116 +27,133 @@ export async function GET(req: NextRequest) {
   // Only fetch actuals after market has closed (session = 'post' | 'closed' | 'pre' next day)
   const isPostClose = status.session === 'post' || status.session === 'closed';
 
-  // ── Auto-save actuals for today if market has closed and file is missing ──
+  // ── Auto-save actuals if missing (today = live fetch; past = historical fetch) ──
   let actualsJustSaved = false;
-  if (isToday && isPostClose && !loadActuals(today)) {
-    try {
-      const movers = await fetchActualMovers(10);
-      const actuals: StoredActual[] = movers.map((m, idx) => ({
-        rank: idx + 1,
-        ticker: m.ticker,
-        daily_return_pct: m.daily_return_pct,
-        closing_price: m.closing_price,
-        total_volume_cr: m.volume_cr,
-        institutional_volume: m.volume_cr,
-        saved_at: new Date().toISOString(),
-      }));
+  const isPastDate = dateParam < today;
+  const needsActuals = !loadActuals(dateParam);
 
-      saveActuals(today, actuals);
-      actualsJustSaved = true;
+  if (needsActuals && loadProjections(dateParam)) {
+    try {
+      let movers;
+      if (isToday && isPostClose) {
+        movers = await fetchActualMovers(10);
+      } else if (isPastDate) {
+        movers = await fetchHistoricalActualMovers(dateParam, 10);
+      }
+      if (movers && movers.length > 0) {
+        const actuals: StoredActual[] = movers.map((m, idx) => ({
+          rank: idx + 1,
+          ticker: m.ticker,
+          daily_return_pct: m.daily_return_pct,
+          closing_price: m.closing_price,
+          total_volume_cr: m.volume_cr,
+          institutional_volume: m.volume_cr,
+          saved_at: new Date().toISOString(),
+        }));
+        saveActuals(dateParam, actuals);
+        actualsJustSaved = true;
+      }
     } catch (err) {
       console.error('Auto-save actuals failed:', err);
     }
   }
 
-  // ── Enrich projections with actual intraday high/low + target/stop hit flags ──
-  // Runs when:
-  //   (a) actuals were just saved for the first time today, OR
-  //   (b) actuals already exist but the stored projections are missing enrichment
-  //       (handles server restarts, page refreshes after initial save)
+  // ── Enrich projections with actual high/low + target/stop hit flags ──
+  // Runs for ANY date (today or historical) where projections exist but actual_high is missing.
   const needsEnrichment = (() => {
-    if (!isToday) return false;
-    const existingProjected = loadProjections(today);
-    const existingActuals = loadActuals(today);
-    if (!existingProjected || !existingActuals) return false;
-    // Need enrichment if any projection row is missing actual_high
+    const existingProjected = loadProjections(dateParam);
+    if (!existingProjected) return false;
     return existingProjected.some(p => (p as any).actual_high === undefined);
   })();
 
-  if (actualsJustSaved || needsEnrichment) {
+  // Don't try to enrich a future date or today before market closes
+  const canEnrich = isPastDate || (isToday && isPostClose);
+
+  if (canEnrich && (actualsJustSaved || needsEnrichment)) {
     try {
-      const projected = loadProjections(today);
-      const actuals = loadActuals(today);
-      if (projected && projected.length > 0 && actuals && actuals.length > 0) {
-        // Fetch live quotes to get today's Day High / Day Low
-        const quotes = await fetchAllNSEQuotes();
-        const quotesMap = Object.fromEntries(quotes.map(q => [q.ticker, q]));
+      const projected = loadProjections(dateParam);
+      if (projected && projected.length > 0) {
+        let ohlcvMap: Map<string, { high: number; low: number }> = new Map();
+
+        if (isToday) {
+          // Live quotes for today
+          const quotes = await fetchAllNSEQuotes();
+          for (const q of quotes) {
+            ohlcvMap.set(q.ticker, { high: q.regularMarketDayHigh, low: q.regularMarketDayLow });
+          }
+        } else {
+          // Historical OHLCV for past dates
+          const hist = await fetchHistoricalDayOHLCV(projected.map(p => p.ticker), dateParam);
+          for (const [ticker, data] of hist.entries()) {
+            ohlcvMap.set(ticker, { high: data.high, low: data.low });
+          }
+        }
 
         let targetHits = 0;
         let stopHits = 0;
 
         const updatedProjected = projected.map(p => {
-          const q = quotesMap[p.ticker];
-          if (!q) return p;
-
-          const actualHigh = q.regularMarketDayHigh;
-          const actualLow = q.regularMarketDayLow;
-          const targetHit = actualHigh >= p.projected_price;
-          const stopHit = actualLow <= p.stop_loss;
-
+          const ohlcv = ohlcvMap.get(p.ticker);
+          if (!ohlcv) return p;
+          const actualHigh = ohlcv.high;
+          const actualLow  = ohlcv.low;
+          const targetHit  = actualHigh >= p.projected_price;
+          const stopHit    = actualLow  <= p.stop_loss;
           if (targetHit) targetHits++;
-          if (stopHit) stopHits++;
-
+          if (stopHit)   stopHits++;
           return { ...p, actual_high: actualHigh, actual_low: actualLow, target_hit: targetHit, stop_hit: stopHit };
         });
 
-        updateProjections(today, updatedProjected);
+        updateProjections(dateParam, updatedProjected);
 
-        if (actualsJustSaved) {
-          const projSet = new Set(projected.map(p => p.ticker));
-          const actTickers = actuals.map(a => a.ticker);
-          const hits = actTickers.filter(t => projSet.has(t));
-          const misses = actTickers.filter(t => !projSet.has(t));
-          const hitRate = hits.length / 10;
+        if (actualsJustSaved && isToday) {
+          const actuals = loadActuals(dateParam);
+          if (actuals) {
+            const projSet    = new Set(projected.map(p => p.ticker));
+            const actTickers = actuals.map(a => a.ticker);
+            const hits       = actTickers.filter(t =>  projSet.has(t));
+            const misses     = actTickers.filter(t => !projSet.has(t));
+            const hitRate    = hits.length / 10;
 
-          if (misses.length > 0) {
-            const mods = loadModifiers();
-            const getVal = (level: string, key: string) =>
-              mods.find(m => m.level === level && m.modifier_key === key)?.current_value ?? 0;
+            if (misses.length > 0) {
+              const mods = loadModifiers();
+              const getVal = (level: string, key: string) =>
+                mods.find(m => m.level === level && m.modifier_key === key)?.current_value ?? 0;
 
-            const successRate = projected.length > 0 ? targetHits / projected.length : 0.5;
-            const themeAdjust = successRate < 0.5 ? 1.02 : 0.98;
-            const instAdjust = successRate < 0.5 ? 1.05 : 0.95;
+              const successRate  = projected.length > 0 ? targetHits / projected.length : 0.5;
+              const themeAdjust  = successRate < 0.5 ? 1.02 : 0.98;
+              const instAdjust   = successRate < 0.5 ? 1.05 : 0.95;
 
-            const adjustments = [
-              { engine_level: 'Level_1', modifier_key: 'CRUDE_DANGER_THRESHOLD', old_value: getVal('Level_1', 'CRUDE_DANGER_THRESHOLD'), new_value: parseFloat((getVal('Level_1', 'CRUDE_DANGER_THRESHOLD') * (1 + (hitRate - 0.5) * 0.05)).toFixed(2)) },
-              { engine_level: 'Level_7', modifier_key: 'INSTITUTIONAL_ACCUMULATION_MIN_CR', old_value: getVal('Level_7', 'INSTITUTIONAL_ACCUMULATION_MIN_CR'), new_value: parseFloat((getVal('Level_7', 'INSTITUTIONAL_ACCUMULATION_MIN_CR') * instAdjust).toFixed(2)) },
-              { engine_level: 'Level_10', modifier_key: 'LEARNING_RATE_ALPHA', old_value: getVal('Level_10', 'LEARNING_RATE_ALPHA'), new_value: parseFloat((getVal('Level_10', 'LEARNING_RATE_ALPHA') * (1 + (1 - hitRate) * 0.2)).toFixed(4)) },
-              { engine_level: 'Level_2', modifier_key: 'MIN_THEME_SCORE', old_value: getVal('Level_2', 'MIN_THEME_SCORE'), new_value: parseFloat((getVal('Level_2', 'MIN_THEME_SCORE') * themeAdjust).toFixed(2)) },
-            ].filter(a => a.old_value !== a.new_value);
+              const adjustments = [
+                { engine_level: 'Level_1',  modifier_key: 'CRUDE_DANGER_THRESHOLD',           old_value: getVal('Level_1',  'CRUDE_DANGER_THRESHOLD'),           new_value: parseFloat((getVal('Level_1',  'CRUDE_DANGER_THRESHOLD')           * (1 + (hitRate - 0.5) * 0.05)).toFixed(2)) },
+                { engine_level: 'Level_7',  modifier_key: 'INSTITUTIONAL_ACCUMULATION_MIN_CR', old_value: getVal('Level_7',  'INSTITUTIONAL_ACCUMULATION_MIN_CR'), new_value: parseFloat((getVal('Level_7',  'INSTITUTIONAL_ACCUMULATION_MIN_CR') * instAdjust).toFixed(2)) },
+                { engine_level: 'Level_10', modifier_key: 'LEARNING_RATE_ALPHA',               old_value: getVal('Level_10', 'LEARNING_RATE_ALPHA'),               new_value: parseFloat((getVal('Level_10', 'LEARNING_RATE_ALPHA')               * (1 + (1 - hitRate) * 0.2)).toFixed(4)) },
+                { engine_level: 'Level_2',  modifier_key: 'MIN_THEME_SCORE',                   old_value: getVal('Level_2',  'MIN_THEME_SCORE'),                   new_value: parseFloat((getVal('Level_2',  'MIN_THEME_SCORE')                   * themeAdjust).toFixed(2)) },
+              ].filter(a => a.old_value !== a.new_value);
 
-            const auditTs = new Date().toISOString();
-            appendVarianceLog(
-              misses.map(ticker => {
-                const actualEntry = actuals.find(a => a.ticker === ticker);
-                return {
-                  date: today,
-                  missed_ticker: ticker,
-                  actual_return: actualEntry?.daily_return_pct ?? 0,
-                  engine_failure_point: 'Level_7',
-                  failure_reason: `${ticker} was in actual top 10 by return but not in projected top 10`,
-                  weight_adjustment_applied: adjustments[0] ?? null,
-                  audit_run_ts: auditTs,
-                };
-              })
-            );
+              const auditTs = new Date().toISOString();
+              appendVarianceLog(
+                misses.map(ticker => {
+                  const actualEntry = actuals.find(a => a.ticker === ticker);
+                  return {
+                    date: dateParam,
+                    missed_ticker: ticker,
+                    actual_return: actualEntry?.daily_return_pct ?? 0,
+                    engine_failure_point: 'Level_7',
+                    failure_reason: `${ticker} was in actual top 10 by return but not in projected top 10`,
+                    weight_adjustment_applied: adjustments[0] ?? null,
+                    audit_run_ts: auditTs,
+                  };
+                })
+              );
 
-            if (adjustments.length > 0) updateModifiers(adjustments);
+              if (adjustments.length > 0) updateModifiers(adjustments);
+            }
           }
         }
       }
     } catch (err) {
-      console.error('Enrichment/auto-save failed:', err);
+      console.error('Enrichment failed:', err);
     }
   }
 
